@@ -9,3 +9,4 @@ df_grafico = pd.DataFrame({
 df_grafico.plot(kind='bar', x='Nome', y='Pontuação', title='Pontuação por pessoa')
 plt.ylabel('Pontuação')
 plt.show()
+#fim

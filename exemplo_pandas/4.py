@@ -19,3 +19,4 @@ print("\nDataFrame com valores ausente (preenchido e sem nulos):")
 print(df_faltante)
 print("\nDataFrame sem valores ausente:")
 print(df_sem_nulos)
+#fim
