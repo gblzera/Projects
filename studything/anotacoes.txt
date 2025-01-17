@@ -1,0 +1,38 @@
+transcrição do caderno:
+
+Data Source:
+
+Sistemas que organizam dados originais que precisam ser analisados ou consolidados em um Data Warehouse.
+
+Alguns tipos são:
+
+-Planilhas (excel, etc)
+-ERPs
+-CRMs
+-BD/DB (data base)
+
+Dados Estruturados:
+    Dados Organizados em tabelas com linhas e colunas
+
+Dados Semi-estruturados:
+    Dados organizados de forma flexivel, como JSON ou XML
+
+----------------------------------------------------------------
+
+Self-Service BI:
+
+É uma abordagem que permite que usuarios de negocios (como analsitas ou gestores) acessem, analisem e interpretem os dadsoa sem depender diretamente de um profissional
+de TI ou analista de dados. Ele promove a autonomia, fornecendo ferramentas faceis de usar.
+
+Principais caracteristicas:
+    1. facilidade de uso
+    2. acesso direto aos dados
+    3. customzação de usuario
+    4. agilidade de operação ( reduz significamente o tempo para insights, uma vez que elimina intermediarios no processo de analise)
+
+Beneficios:
+    1. decisões rapidas
+    2. redução da sobrecarga do TI
+    3. empoderamento (chat gpt é feminista)
+
+Ad-hoc - O termo "ad-hoc" significa "para esta finalidade"

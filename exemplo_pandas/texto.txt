@@ -1,0 +1,6 @@
+1. Criação e manipulação DataFrame
+2. Ler e salvar arquivos 
+3. Filtrar e ordenar dados
+4. Trabalhando com dados faltantes
+5. Agrupamento e estatistica
+6. Crirar graficos simples
