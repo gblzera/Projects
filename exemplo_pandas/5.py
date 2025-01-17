@@ -16,4 +16,3 @@ print("\nEstatisticas basicas")
 print(f"Média: {df_estatistica['Valor'].mean()}")
 print(f"Desvio padrão: {df_estatistica['Valor'].std()}")
 print(f"Máximo: {df_estatistica['Valor'].max()}")
-#fim

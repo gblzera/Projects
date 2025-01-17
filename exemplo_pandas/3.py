@@ -31,4 +31,3 @@ print(df_read.head())
 df_read.to_excel('dados2.xlsx', index=False)
 
 print("\nArquivos CSV e Excel criados com sucesso!")
-#fim

@@ -21,4 +21,4 @@ print(df)
 #adicionando uma nova coluna
 #df['Profissão'] = ['Engeheira', 'Uber', 'Julius']
 #print(df)
-#fim
+

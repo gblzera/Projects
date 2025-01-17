@@ -34,4 +34,3 @@ plt.ylabel('Idade')
 plt.grid(True)
 
 plt.show()
-#fim
