@@ -1,0 +1,16 @@
+Backend, resumindo de maneira bem simples, é a parte do sistema que roda no servidor e gerencia a logicam dados e integrações com outras ferramentas ou APIs.
+
+-Pode-se crirar APIs para o frontend consumir.
+-Genreciar o banco de dados
+-Auntenticas usuarios
+-Processar logicas de negocios
+
+Enfim, muitas funcionalidades na area de logia e dados.
+
+As ferramentas mais usadas são:
+
+-Node.js : plataforma para rodar o JS no backend
+-Express.js : framework minimalista para criar APIs e gerenciar dados
+-MongoDB (ou qualquer outro banco de dados, MySQL por exemplos)
+-Postman : para realizar testes de APIs
+-APIsREST : conjuto de regras para criar APIs eficientes
