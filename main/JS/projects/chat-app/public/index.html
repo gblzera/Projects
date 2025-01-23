@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat em Tempo Real</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      h1 {
+        text-align: center;
+      }
+      #chat-box {
+        border: 1px solid #ccc;
+        height: 300px;
+        overflow-y: auto;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      #chat-box div {
+        margin-bottom: 5px;
+      }
+      #login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #chat {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Chat em Tempo Real</h1>
+
+    <!-- Tela de login -->
+    <div id="login">
+      <input type="text" id="username-input" placeholder="Digite seu nome..." />
+      <button id="login-button">Entrar</button>
+    </div>
+
+    <!-- Tela do chat -->
+    <div id="chat">
+      <div id="chat-box"></div>
+      <input
+        type="text"
+        id="message-input"
+        placeholder="Digite uma mensagem..."
+      />
+      <button id="send-button">Enviar</button>
+    </div>
+
+    <script>
+      const loginDiv = document.getElementById("login");
+      const chatDiv = document.getElementById("chat");
+      const chatBox = document.getElementById("chat-box");
+      const usernameInput = document.getElementById("username-input");
+      const messageInput = document.getElementById("message-input");
+      const sendButton = document.getElementById("send-button");
+      const loginButton = document.getElementById("login-button");
+
+      let socket;
+      let username;
+
+      loginButton.addEventListener("click", () => {
+        username = usernameInput.value.trim();
+        if (username) {
+          // Conecta ao servidor WebSocket
+          socket = new WebSocket(`ws://${window.location.hostname}:8080`);
+
+          socket.onopen = () => {
+            // Envia o nome de usuário para identificação
+            socket.send(JSON.stringify({ type: "identification", username }));
+            loginDiv.style.display = "none";
+            chatDiv.style.display = "block";
+          };
+
+          socket.onmessage = async (event) => {
+            const data = JSON.parse(event.data);
+            if (data.type === "message") {
+              const messageElement = document.createElement("div");
+              messageElement.textContent = data.message;
+              chatBox.appendChild(messageElement);
+              chatBox.scrollTop = chatBox.scrollHeight; // Rola para a última mensagem
+            } else if (data.type === "info") {
+              // Mensagens informativas do servidor
+              const infoElement = document.createElement("div");
+              infoElement.style.fontStyle = "italic";
+              infoElement.textContent = data.message;
+              chatBox.appendChild(infoElement);
+            }
+          };
+
+          socket.onclose = () => {
+            console.log("Desconectado do servidor WebSocket");
+          };
+        } else {
+          alert("Por favor, insira um nome de usuário válido!");
+        }
+      });
+
+      sendButton.addEventListener("click", () => {
+        const message = messageInput.value.trim();
+        if (message) {
+          socket.send(JSON.stringify({ type: "message", message }));
+          messageInput.value = ""; // Limpa o campo de entrada
+        }
+      });
+
+      messageInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          sendButton.click(); // Envia a mensagem ao pressionar Enter
+        }
+      });
+    </script>
+  </body>
+</html>
