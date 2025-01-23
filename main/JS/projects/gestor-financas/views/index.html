@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestor de Finanças Pessoais</title>
+    <link rel="stylesheet" href="public/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Gestor de Finanças Pessoais</h1>
+
+      <form id="form-transacao">
+        <input type="text" id="descricao" placeholder="Descrição" required />
+        <input type="number" id="valor" placeholder="Valor" required />
+        <select id="tipo" required>
+          <option value="receita">Receita</option>
+          <option value="despesa">Despesa</option>
+        </select>
+        <button type="submit">Adicionar Transação</button>
+      </form>
+
+      <canvas id="grafico"></canvas>
+    </div>
+
+    <script src="public/app.js"></script>
+  </body>
+</html>

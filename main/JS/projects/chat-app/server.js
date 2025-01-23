@@ -13,9 +13,9 @@ wss.on("connection", (ws) => {
 
   // Salva o nome de usuário ao receber a primeira mensagem
   ws.on("message", (message) => {
-    const data = JSON.parse(message); // Mensagem é enviada no formato JSON
+    const data = JSON.parse(message);
     if (data.type === "identification") {
-      ws.username = data.username; // Armazena o nome do usuário
+      ws.username = data.username;
       console.log(`${ws.username} entrou no chat`);
       ws.send(
         JSON.stringify({ type: "info", message: `Bem-vindo, ${ws.username}!` })
