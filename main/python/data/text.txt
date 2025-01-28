@@ -1,0 +1,61 @@
+Resumo: Contrução de Métricas com DAX, Variáveis com DAX e FIGMA para visualização.
+
+1. Contrução de Métricas com DAX:
+DAX(Data Analysis Expressions) é uma linguagem usada no PowerBI para criar cálculos e análises presonalizadas, como somas, médidas e comparativos.
+Existem dois principais usos:
+
+~ Medidas
+    ~ Calculam dinamicamente com base nos filtros aplicados no relatório
+    ~ Exemplo:
+        TotalVendas = SUM(Vendas[ValorVenda])
+        ~ Soma os valores na coluna ValorVenda
+
+~ Colunas Calculadas
+    ~ Criam novas colunas baseadas em dadaos existentes(Linha por linha)
+    ~ Exemplo:
+        Lucro = Vendas[ValorVenda] - Vendas[Custo]
+
+2. Variáveis com DAX:
+As variáveis tornam os cálculos mais eficientes e organizados. Elas são declaradas usando a palavra-chave VAR 
+e são úteis para evitar duplicidades de código.
+
+~ Exemplos simples:
+    ~ Calcular a soma total e a média das vendas trimestrais:
+        VendasTrimestrais =
+        VAR VendasTotais = SUM(Vendas[ValorVenda])
+        VAR Trimestres = DISTINCTCOUNT(Vendas[Trimestre])
+        RETURN
+        VendasTotais / Trimestres
+
+~ Exemplo complexo:
+    ~ Classificar trimestres como "Alta" ou "Baixa" com base em uma média:
+        Classicacao = 
+        VAR VendasTotais = SUM(Vendas[ValorVenda])
+        VAR Trimestres = DISTINCTCOUNT(Vendas[Trimestre])
+        VAR MediaTrimestral = VendasTotais / Trimestres
+        RETURN
+        IF (
+            MAX(Vendas[DataVenda]) <= TODAY(), //Verifica se a data de venda não ultrapassa a data atual. Isso impede que o cálculo vá além do período analisado.
+            IF(MediaTrimestral > 250, "Alta", "Baixa"), //Retorna "Alta" se a me´dia trimestral for maior que 250, caso contrário retorna "Baixa".
+            BLANK() //Caso a data de venda seja futura(ou inválida) a medida retorna vazio para evitar erros ou loops.
+        )
+
+3. FIGMA para visualização:
+FIGMA é uma ferramenta poderosa para design de interfaces e prototipagem. No contexto de dashboards e visualizações:
+
+~ Porque usar FIGMA?
+    	~ Planejar e projetar a aparência dos relatórios antes da contrução no Power BI.
+        ~ Criar layouts organizados e atraentes, facilitando a navegação dos usuários.
+
+~ Passos básicos no FIGMA:
+    1. Criação de WIREFRAMES:
+        ~ Estruturar os elementos principais(gráficos, tabelas, filtros)
+    2. Uso de componestes:
+        ~ Criar padrões reutilizáveis para manter consistência visual.
+    3. Prototipagem:
+        ~ Simular interações, como seleções de filtros ou navegação entre páginas.
+
+~ Dicas de design (ChatGPT)
+    ~ Use espaços em branco para organizar os elementos.
+    ~ Escolha cores que contrastem bem e mantenham uma paleta consistente.
+    ~ Evite sobrecarregar o layout com muitos dados em uma única página. 

@@ -1,0 +1,15 @@
+// Medida para caluclar o total de vendas
+TotalVendas =
+SUM(Vendas[ValorVenda])
+
+// Média trimestral com classificação
+Classificaçao =
+VAR VendasTotais = SUM(Vendas[ValorVenda])
+VAR Trimestres = DISTINCTCOUNT(Vendas[Trimestre])
+VAR MédiaTrimestral = VendasTotais / Trimestres
+RETURN
+IF (
+    MAX(Vendas[DataVenda]) <= TODAY(),
+    IF(MediaTrimestral > 250, "Alta", "Baixa"),
+    BLANK()
+)
