@@ -1,5 +1,3 @@
-package port.generateAlphabet;
-
 import java.util.Arrays;
 
 public class Alphabet {
