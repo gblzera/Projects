@@ -16,7 +16,7 @@ todo.db
 # Diretórios
 
 **/python/data/.venv/*
-
+**/python/games/.venv/*
 
 # * Qualquer coisa
 # ? Um caracter
