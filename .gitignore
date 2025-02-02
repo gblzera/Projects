@@ -17,6 +17,9 @@ todo.db
 
 **/python/data/.venv/*
 **/python/games/.venv/*
+**/python/manim/venv/*
+**/python/manim/__pycache__
+**/python/manim/media
 
 # * Qualquer coisa
 # ? Um caracter
